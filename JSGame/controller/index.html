@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Gamepad</title>
+</head>
+<body>
+    <script>
+            const gamepads = {};
+
+            function gamepadHandler(event, connected) {
+            const gamepad = event.gamepad;
+            // Note:
+            // gamepad === navigator.getGamepads()[gamepad.index]
+            if (connected) {
+                gamepads[gamepad.index] = gamepad;
+                console.log(gamepads);
+            } else {
+                delete gamepads[gamepad.index];
+            }
+            }
+
+            window.addEventListener(
+            "gamepadconnected",
+            (e) => {
+                gamepadHandler(e, true);
+                                    console.log(
+                        "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+                        e.gamepad.index,
+                        e.gamepad.id,
+                        e.gamepad.buttons,
+                        e.gamepad.axes.length,
+                    );
+                    console.log(navigator.getGamepads()[0]);
+                   gameLoop();
+            },
+            false,
+            );
+            window.addEventListener(
+            "gamepaddisconnected",
+            (e) => {
+                gamepadHandler(e, false);
+            },
+            false,
+            );
+
+            function gameLoop() {
+                const gp = navigator.getGamepads()[0];
+
+                let a = 0;
+                let b = 0;
+
+                if (gp.buttons[0].value > 0 || gp.buttons[0].pressed) {
+                   console.log("X")
+                } else if (gp.buttons[1].value > 0 || gp.buttons[1].pressed) {
+                    console.log("circle")
+                } else if (gp.buttons[2].value > 0 || gp.buttons[2].pressed) {
+                    console.log("square")
+                } else if (gp.buttons[3].value > 0 || gp.buttons[3].pressed) {
+                    console.log("triangle");
+                }
+
+                if (gp.buttons[15].value > 0 || gp.buttons[15].pressed) {
+                   console.log("right")
+                } else if (gp.buttons[14].value > 0 || gp.buttons[13].pressed) {
+                    console.log("left")
+                } else if (gp.buttons[12].value > 0 || gp.buttons[12].pressed) {
+                    console.log("up")
+                } else if (gp.buttons[13].value > 0 || gp.buttons[13].pressed) {
+                    console.log("down");
+                }
+
+               //console.log(gp.axes);
+
+
+
+
+                requestAnimationFrame(gameLoop);
+                }  
+            
+
+              
+    </script>
+</body>
+</html>

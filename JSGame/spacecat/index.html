@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Cat Blaster</title>
+    <meta property="og:title" content="Space Cat Blaster" />
+    <meta property="og:type" content="image" />
+    <meta property="og:url" content="https://deconstructiondevelopments.com/gams/spacecat/" />
+    <meta
+      property="og:image"
+      content="https://deconstructiondevelopments.com/gams/spacecat/img/screen.png"
+    />
+    <style>
+         * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/screen.png" style="display: none;" />
+    <div id="gameMenu" style="display: none; position: absolute; top: 300px; left:325px; color:white; font-size: 40px;">Paused</div>
+    <canvas></canvas>
+    <div id="gameHUD">HP</div>
+    <div id="gameDispControls"><b>Movement: Up, Down, Left, Right; Fire: Space; Pause: "P"</div>
+    <script src="index.js"></script>
+</body>
+</html>
