@@ -1,4 +1,5 @@
-﻿using System.Data.SqlTypes;
+﻿using eBookManager.Engine;
+using System.Data.SqlTypes;
 using System.Text.Json;
 
 namespace eBookManager.Helper
@@ -44,7 +45,7 @@ namespace eBookManager.Helper
             return exists;
         }
 
-        public async static Task WriteToDataStore(this List<StorageSpace> value, string storagePath, bool appendToExistingFile = false)
+        public static async Task WriteToDataStore(this List<StorageSpace> value, string storagePath, bool appendToExistingFile = false)
         {
             using (FileStream fs = File.Create(storagePath)) 
             await JsonSerializer.SerializeAsync(fs, value);
